@@ -5,10 +5,10 @@ import { render } from 'react-dom';
 import App from './App';
 
 const renderApp = () => {
-  render(<App />, document.getElementById('app'))
-}
+  render(<App />, document.getElementById('app'));
+};
 
-renderApp(); 
+renderApp();
 
 // This is only enabled in development per config
 // we call renderApp() whenever App changes
@@ -16,6 +16,6 @@ renderApp();
 
 if (module.hot) {
   module.hot.accept('./App', () => {
-    renderApp(); 
+    renderApp();
   });
 }

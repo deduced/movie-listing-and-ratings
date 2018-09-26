@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+<<<<<<< HEAD
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { RouterHistory } from 'react-router-dom';
@@ -49,3 +50,16 @@ const mapDispatchToProps = (dispatch: Function) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+=======
+import { Link } from 'react-router-dom';
+
+const Landing = () => (
+  <div className="landing">
+    <h1>svideo</h1>
+    <input type="text" placeholder="Search" />
+    <Link to="/search">or Browse All</Link>
+  </div>
+);
+
+export default Landing;
+>>>>>>> v3-10

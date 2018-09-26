@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 // flow-typed signature: a1c954c4ab3268900025db22e3f5c812
 // flow-typed version: ab26bc3472/jest_v20.x.x/flow_>=v0.33.x
 
 type JestMockFn = {
   (...args: Array<any>): any,
+=======
+// flow-typed signature: 002f0912eb0f40f562c348561ea3d850
+// flow-typed version: a5bbe16c29/jest_v20.x.x/flow_>=v0.39.x
+
+type JestMockFn<TArguments: $ReadOnlyArray<*>, TReturn> = {
+  (...args: TArguments): TReturn,
+>>>>>>> v3-10
   /**
    * An object for introspecting mock calls
    */
@@ -12,24 +20,40 @@ type JestMockFn = {
      * function. Each call is represented by an array of arguments that were
      * passed during the call.
      */
+<<<<<<< HEAD
     calls: Array<Array<any>>,
+=======
+    calls: Array<TArguments>,
+>>>>>>> v3-10
     /**
      * An array that contains all the object instances that have been
      * instantiated from this mock function.
      */
+<<<<<<< HEAD
     instances: mixed
+=======
+    instances: Array<TReturn>
+>>>>>>> v3-10
   },
   /**
    * Resets all information stored in the mockFn.mock.calls and
    * mockFn.mock.instances arrays. Often this is useful when you want to clean
    * up a mock's usage data between two assertions.
    */
+<<<<<<< HEAD
   mockClear(): Function,
+=======
+  mockClear(): void,
+>>>>>>> v3-10
   /**
    * Resets all information stored in the mock. This is useful when you want to
    * completely restore a mock back to its initial state.
    */
+<<<<<<< HEAD
   mockReset(): Function,
+=======
+  mockReset(): void,
+>>>>>>> v3-10
   /**
    * Removes the mock and restores the initial implementation. This is useful
    * when you want to mock functions in certain test cases and restore the
@@ -37,20 +61,36 @@ type JestMockFn = {
    * works when mock was created with jest.spyOn. Thus you have to take care of
    * restoration yourself when manually assigning jest.fn().
    */
+<<<<<<< HEAD
   mockRestore(): Function,
+=======
+  mockRestore(): void,
+>>>>>>> v3-10
   /**
    * Accepts a function that should be used as the implementation of the mock.
    * The mock itself will still record all calls that go into and instances
    * that come from itself -- the only difference is that the implementation
    * will also be executed when the mock is called.
    */
+<<<<<<< HEAD
   mockImplementation(fn: Function): JestMockFn,
+=======
+  mockImplementation(
+    fn: (...args: TArguments) => TReturn,
+  ): JestMockFn<TArguments, TReturn>,
+>>>>>>> v3-10
   /**
    * Accepts a function that will be used as an implementation of the mock for
    * one call to the mocked function. Can be chained so that multiple function
    * calls produce different results.
    */
+<<<<<<< HEAD
   mockImplementationOnce(fn: Function): JestMockFn,
+=======
+  mockImplementationOnce(
+    fn: (...args: TArguments) => TReturn,
+  ): JestMockFn<TArguments, TReturn>,
+>>>>>>> v3-10
   /**
    * Just a simple sugar function for returning `this`
    */
@@ -58,11 +98,19 @@ type JestMockFn = {
   /**
    * Deprecated: use jest.fn(() => value) instead
    */
+<<<<<<< HEAD
   mockReturnValue(value: any): JestMockFn,
   /**
    * Sugar for only returning a value once inside your mock
    */
   mockReturnValueOnce(value: any): JestMockFn
+=======
+  mockReturnValue(value: TReturn): JestMockFn<TArguments, TReturn>,
+  /**
+   * Sugar for only returning a value once inside your mock
+   */
+  mockReturnValueOnce(value: TReturn): JestMockFn<TArguments, TReturn>
+>>>>>>> v3-10
 };
 
 type JestAsymmetricEqualityType = {
@@ -109,8 +157,45 @@ type JestPromiseType = {
   resolves: JestExpectType
 };
 
+<<<<<<< HEAD
 type JestExpectType = {
   not: JestExpectType,
+=======
+/**
+ *  Plugin: jest-enzyme
+ */
+type EnzymeMatchersType = {
+  toBeChecked(): void,
+  toBeDisabled(): void,
+  toBeEmpty(): void,
+  toBeEmptyRender(): void,
+  toBePresent(): void,
+  toContainReact(element: React$Element<any>): void,
+  toExist(): void,
+  toHaveClassName(className: string): void,
+  toHaveHTML(html: string): void,
+  toHaveProp: ((propKey: string, propValue?: any) => void) & ((props: Object) => void),
+  toHaveRef(refName: string): void,
+  toHaveState: ((stateKey: string, stateValue?: any) => void) & ((state: Object) => void),
+  toHaveStyle: ((styleKey: string, styleValue?: any) => void) & ((style: Object) => void),
+  toHaveTagName(tagName: string): void,
+  toHaveText(text: string): void,
+  toIncludeText(text: string): void,
+  toHaveValue(value: any): void,
+  toMatchElement(element: React$Element<any>): void,
+  toMatchSelector(selector: string): void
+};
+
+// DOM testing library extensions https://github.com/kentcdodds/dom-testing-library#custom-jest-matchers
+type DomTestingLibraryType = {
+  toBeInTheDOM(): void,
+  toHaveTextContent(content: string): void,
+  toHaveAttribute(name: string, expectedValue?: string): void
+};
+
+type JestExpectType = {
+  not: JestExpectType & EnzymeMatchersType & DomTestingLibraryType,
+>>>>>>> v3-10
   /**
    * If you have a mock function, you can use .lastCalledWith to test what
    * arguments it was last called with.
@@ -211,6 +296,14 @@ type JestExpectType = {
    */
   toHaveBeenCalledWith(...args: Array<any>): void,
   /**
+<<<<<<< HEAD
+=======
+   * Use .toHaveBeenLastCalledWith to ensure that a mock function was last called
+   * with specific arguments.
+   */
+  toHaveBeenLastCalledWith(...args: Array<any>): void,
+  /**
+>>>>>>> v3-10
    * Check that an object has a .length property and it is set to a certain
    * numeric value.
    */
@@ -220,9 +313,15 @@ type JestExpectType = {
    */
   toHaveProperty(propPath: string, value?: any): void,
   /**
+<<<<<<< HEAD
    * Use .toMatch to check that a string matches a regular expression.
    */
   toMatch(regexp: RegExp): void,
+=======
+   * Use .toMatch to check that a string matches a regular expression or string.
+   */
+  toMatch(regexpOrString: RegExp | string): void,
+>>>>>>> v3-10
   /**
    * Use .toMatchObject to check that a javascript object matches a subset of the properties of an object.
    */
@@ -233,6 +332,7 @@ type JestExpectType = {
   toMatchSnapshot(name?: string): void,
   /**
    * Use .toThrow to test that a function throws when it is called.
+<<<<<<< HEAD
    */
   toThrow(message?: string | Error): void,
   /**
@@ -240,6 +340,15 @@ type JestExpectType = {
    * is called. The argument can be a string for the error message, a class for
    * the error, or a regex that should match the error.
    */
+=======
+   * If you want to test that a specific error gets thrown, you can provide an
+   * argument to toThrow. The argument can be a string for the error message,
+   * a class for the error, or a regex that should match the error.
+   *
+   * Alias: .toThrowError
+   */
+  toThrow(message?: string | Error | RegExp): void,
+>>>>>>> v3-10
   toThrowError(message?: string | Error | RegExp): void,
   /**
    * Use .toThrowErrorMatchingSnapshot to test that a function throws a error
@@ -296,7 +405,13 @@ type JestObjectType = {
    * Returns a new, unused mock function. Optionally takes a mock
    * implementation.
    */
+<<<<<<< HEAD
   fn(implementation?: Function): JestMockFn,
+=======
+  fn<TArguments: $ReadOnlyArray<*>, TReturn>(
+    implementation?: (...args: TArguments) => TReturn,
+  ): JestMockFn<TArguments, TReturn>,
+>>>>>>> v3-10
   /**
    * Determines if the given function is a mocked function.
    */
@@ -376,7 +491,11 @@ type JestObjectType = {
    * Creates a mock function similar to jest.fn but also tracks calls to
    * object[methodName].
    */
+<<<<<<< HEAD
   spyOn(object: Object, methodName: string): JestMockFn
+=======
+  spyOn(object: Object, methodName: string): JestMockFn<any, any>
+>>>>>>> v3-10
 };
 
 type JestSpyType = {
@@ -384,6 +503,7 @@ type JestSpyType = {
 };
 
 /** Runs this function after every test inside this context */
+<<<<<<< HEAD
 declare function afterEach(fn: Function): void;
 /** Runs this function before every test inside this context */
 declare function beforeEach(fn: Function): void;
@@ -393,6 +513,34 @@ declare function afterAll(fn: Function): void;
 declare function beforeAll(fn: Function): void;
 /** A context for grouping tests together */
 declare function describe(name: string, fn: Function): void;
+=======
+declare function afterEach(fn: (done: () => void) => ?Promise<mixed>, timeout?: number): void;
+/** Runs this function before every test inside this context */
+declare function beforeEach(fn: (done: () => void) => ?Promise<mixed>, timeout?: number): void;
+/** Runs this function after all tests have finished inside this context */
+declare function afterAll(fn: (done: () => void) => ?Promise<mixed>, timeout?: number): void;
+/** Runs this function before any tests have started inside this context */
+declare function beforeAll(fn: (done: () => void) => ?Promise<mixed>, timeout?: number): void;
+
+/** A context for grouping tests together */
+declare var describe: {
+  /**
+   * Creates a block that groups together several related tests in one "test suite"
+   */
+  (name: string, fn: () => void): void,
+
+  /**
+   * Only run this describe block
+   */
+  only(name: string, fn: () => void): void,
+
+  /**
+   * Skip running this describe block
+   */
+  skip(name: string, fn: () => void): void,
+};
+
+>>>>>>> v3-10
 
 /** An individual test unit */
 declare var it: {
@@ -401,31 +549,61 @@ declare var it: {
    *
    * @param {string} Name of Test
    * @param {Function} Test
+<<<<<<< HEAD
    */
   (name: string, fn?: Function): ?Promise<void>,
+=======
+   * @param {number} Timeout for the test, in milliseconds.
+   */
+  (name: string, fn?: (done: () => void) => ?Promise<mixed>, timeout?: number): void,
+>>>>>>> v3-10
   /**
    * Only run this test
    *
    * @param {string} Name of Test
    * @param {Function} Test
+<<<<<<< HEAD
    */
   only(name: string, fn?: Function): ?Promise<void>,
+=======
+   * @param {number} Timeout for the test, in milliseconds.
+   */
+  only(name: string, fn?: (done: () => void) => ?Promise<mixed>, timeout?: number): void,
+>>>>>>> v3-10
   /**
    * Skip running this test
    *
    * @param {string} Name of Test
    * @param {Function} Test
+<<<<<<< HEAD
    */
   skip(name: string, fn?: Function): ?Promise<void>,
+=======
+   * @param {number} Timeout for the test, in milliseconds.
+   */
+  skip(name: string, fn?: (done: () => void) => ?Promise<mixed>, timeout?: number): void,
+>>>>>>> v3-10
   /**
    * Run the test concurrently
    *
    * @param {string} Name of Test
    * @param {Function} Test
+<<<<<<< HEAD
    */
   concurrent(name: string, fn?: Function): ?Promise<void>
 };
 declare function fit(name: string, fn: Function): ?Promise<void>;
+=======
+   * @param {number} Timeout for the test, in milliseconds.
+   */
+  concurrent(name: string, fn?: (done: () => void) => ?Promise<mixed>, timeout?: number): void,
+};
+declare function fit(
+  name: string,
+  fn: (done: () => void) => ?Promise<mixed>,
+  timeout?: number,
+): void;
+>>>>>>> v3-10
 /** An individual test unit */
 declare var test: typeof it;
 /** A disabled group of tests */
@@ -437,6 +615,7 @@ declare var xit: typeof it;
 /** A disabled individual test */
 declare var xtest: typeof it;
 
+<<<<<<< HEAD
 /** The expect function is used every time you want to test a value */
 declare var expect: {
   /** The object that you want to make assertions against */
@@ -445,6 +624,62 @@ declare var expect: {
   extend(matchers: { [name: string]: JestMatcher }): void,
   /** Add a module that formats application-specific data structures. */
   addSnapshotSerializer(serializer: (input: Object) => string): void,
+=======
+type JestPrettyFormatColors = {
+  comment: { close: string, open: string },
+  content: { close: string, open: string },
+  prop: { close: string, open: string },
+  tag: { close: string, open: string },
+  value: { close: string, open: string },
+};
+
+type JestPrettyFormatIndent = string => string;
+type JestPrettyFormatRefs = Array<any>;
+type JestPrettyFormatPrint = any => string;
+type JestPrettyFormatStringOrNull = string | null;
+
+type JestPrettyFormatOptions = {|
+  callToJSON: boolean,
+  edgeSpacing: string,
+  escapeRegex: boolean,
+  highlight: boolean,
+  indent: number,
+  maxDepth: number,
+  min: boolean,
+  plugins: JestPrettyFormatPlugins,
+  printFunctionName: boolean,
+  spacing: string,
+  theme: {|
+    comment: string,
+    content: string,
+    prop: string,
+    tag: string,
+    value: string,
+  |},
+|};
+
+type JestPrettyFormatPlugin = {
+  print: (
+    val: any,
+    serialize: JestPrettyFormatPrint,
+    indent: JestPrettyFormatIndent,
+    opts: JestPrettyFormatOptions,
+    colors: JestPrettyFormatColors,
+  ) => string,
+  test: any => boolean,
+};
+
+type JestPrettyFormatPlugins = Array<JestPrettyFormatPlugin>;
+
+/** The expect function is used every time you want to test a value */
+declare var expect: {
+  /** The object that you want to make assertions against */
+  (value: any): JestExpectType & JestPromiseType & EnzymeMatchersType & DomTestingLibraryType,
+  /** Add additional Jasmine matchers to Jest's roster */
+  extend(matchers: { [name: string]: JestMatcher }): void,
+  /** Add a module that formats application-specific data structures. */
+  addSnapshotSerializer(pluginModule: JestPrettyFormatPlugin): void,
+>>>>>>> v3-10
   assertions(expectedAssertions: number): void,
   hasAssertions(): void,
   any(value: mixed): JestAsymmetricEqualityType,
@@ -464,7 +699,11 @@ declare function spyOn(value: mixed, method: string): Object;
 declare var jest: JestObjectType;
 
 /**
+<<<<<<< HEAD
  * The global Jamine object, this is generally not exposed as the public API,
+=======
+ * The global Jasmine object, this is generally not exposed as the public API,
+>>>>>>> v3-10
  * using features inside here could break in later versions of Jest.
  */
 declare var jasmine: {

@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 node_modules/
 public/
+=======
+public/
+node_modules/
+>>>>>>> v3-10

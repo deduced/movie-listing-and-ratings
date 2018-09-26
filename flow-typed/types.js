@@ -1,16 +1,20 @@
 // @flow
 
+<<<<<<< HEAD
 declare var module: {
   hot: {
     accept(path: string, callback: () => void): void
   }
 };
 
+=======
+>>>>>>> v3-10
 export type Show = {
   title: string,
   description: string,
   year: string,
   imdbID: string,
+<<<<<<< HEAD
   poster: string,
   trailer: string,
   rating?: string
@@ -31,3 +35,14 @@ declare type ActionT<A: ActionType, P> = {|
 |};
 
 export type Action = ActionT<'SET_SEARCH_TERM', string> | ActionT<'ADD_API_DATA', Show>;
+=======
+  trailer: string,
+  poster: string
+};
+
+declare var module: {
+  hot: {
+    accept(path: string, callback: () => void): void
+  }
+}
+>>>>>>> v3-10

@@ -1,6 +1,7 @@
 {
   "scripts": {
     "api": "node ratingsAPI.js",
+<<<<<<< HEAD
     "format": "prettier --list-different --single-quote --print-width=120 webpack.config.js \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --watch",
@@ -10,6 +11,21 @@
     "start": "NODE_ENV=server node server.js",
     "test": "NODE_ENV=test jest",
     "test:update": "NODE_ENV=test jest -u"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ]
+=======
+    "build": "webpack",
+    "dev": "webpack-dev-server",
+    "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
+    "lint": "eslint **/*.{js,jsx} --quiet",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest -u",
+    "watch": "webpack --watch"
+>>>>>>> v3-10
   },
   "jest": {
     "snapshotSerializers": [

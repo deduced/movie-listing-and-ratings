@@ -17,7 +17,7 @@ const Image = styled.img`
 `;
 
 const Spinner = () => (
-  <Image src="/public/image/loading.png" alt="loading indicator" />
+  <Image src="/public/img/loading.png" alt="loading indicator" />
 );
 
 export default Spinner;

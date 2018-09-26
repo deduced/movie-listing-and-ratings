@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import ShowCard from "./ShowCard";
 import { Show } from "../flow-typed/types";
+import Header from "./Header";
 
 class Search extends Component {
   state = {
@@ -21,15 +22,11 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>Svideo</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="Search"
-          />
-        </header>
+        <Header
+          showSearch
+          handleSearchTermChange={this.handleSearchTermChange}
+          searchTerm={this.state.searchTerm}
+        />
         <div>
           {this.props.shows
             .filter(

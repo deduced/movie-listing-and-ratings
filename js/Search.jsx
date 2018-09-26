@@ -1,6 +1,5 @@
 // @flow
 
-<<<<<<< HEAD
 import React from 'react';
 import { connect } from 'react-redux';
 import ShowCard from './ShowCard';
@@ -26,48 +25,3 @@ const mapStateToProps = state => ({
 
 export const Unwrapped = Search;
 export default connect(mapStateToProps)(Search);
-=======
-import React, { Component } from "react";
-import ShowCard from "./ShowCard";
-import { Show } from "../flow-typed/types";
-import Header from "./Header";
-
-class Search extends Component {
-  state = {
-    searchTerm: ""
-  };
-
-  props: {
-    shows: Array<Show>
-  };
-
-  handleSearchTermChange = (
-    event: SyntheticKeyboardEvent & { target: HTMLInputElement }
-  ) => {
-    this.setState({ searchTerm: event.target.value });
-  };
-  render() {
-    return (
-      <div className="search">
-        <Header
-          showSearch
-          handleSearchTermChange={this.handleSearchTermChange}
-          searchTerm={this.state.searchTerm}
-        />
-        <div>
-          {this.props.shows
-            .filter(
-              show =>
-                `${show.title} ${show.description}`
-                  .toUpperCase()
-                  .indexOf(this.state.searchTerm.toUpperCase()) >= 0
-            )
-            .map(show => <ShowCard key={show.imdbID} {...show} />)}
-        </div>
-      </div>
-    );
-  }
-}
-
-export default Search;
->>>>>>> v3-10

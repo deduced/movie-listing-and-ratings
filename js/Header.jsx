@@ -1,6 +1,5 @@
 // @flow
 
-<<<<<<< HEAD
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,37 +20,6 @@ const Header = (props: { showSearch?: boolean, handleSearchTermChange: Function,
       </h2>
     );
   }
-=======
-import React from "react";
-import { Link } from "react-router-dom";
-
-const Header = (props?: {
-  showSearch: boolean,
-  handleSearchTermChange?: Function,
-  searchTerm?: string
-}) => {
-  let utilSpace;
-  if (props.showSearch) {
-    utilSpace = (
-      <input
-        onChange={props.handleSearchTermChange}
-        value={props.searchTerm}
-        type="text"
-        placeholder="Search"
-      />
-    );
-  } else {
-    utilSpace = (
-      <h2>
-        <Link to="/search">
-          Back
-        </Link>
-
-      </h2>
-    );
-  }
-
->>>>>>> v3-10
   return (
     <header>
       <h1>
@@ -65,7 +33,6 @@ const Header = (props?: {
 };
 
 Header.defaultProps = {
-<<<<<<< HEAD
   showSearch: false
 };
 
@@ -77,11 +44,3 @@ const mapDispatchToProps = (dispatch: Function) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-=======
-  showSearch: false,
-  handleSearchTermChange: function noop() {},
-  searchTerm: ""
-};
-
-export default Header;
->>>>>>> v3-10
